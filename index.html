@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>僵尸生存射击游戏</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #1a1a2e;
+            overflow: hidden;
+        }
+        #game-container {
+            border: 3px solid #4a4a6a;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(100, 100, 150, 0.3);
+        }
+        #loading {
+            position: absolute;
+            color: white;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+        }
+        #error {
+            position: absolute;
+            color: #e74c3c;
+            font-size: 18px;
+            font-family: Arial, sans-serif;
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading">加载中...</div>
+    <div id="error"></div>
+    <div id="game-container"></div>
+    
+    <script>
+        window.onerror = function(msg, url, lineNo, columnNo, error) {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('error').style.display = 'block';
+            document.getElementById('error').innerHTML = '错误: ' + msg + '<br>文件: ' + url + '<br>行号: ' + lineNo;
+            return false;
+        };
+    </script>
+    
+    <script src="https://cdn.bootcdn.net/ajax/libs/phaser/3.60.0/phaser.min.js"></script>
+    <script>
+        if (typeof Phaser === 'undefined') {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('error').style.display = 'block';
+            document.getElementById('error').innerHTML = 'Phaser.js 加载失败，请检查网络连接';
+        }
+    </script>
+    
+    <script src="src/config/GameConfig.js"></script>
+    <script src="src/entities/Player.js"></script>
+    <script src="src/entities/Zombie.js"></script>
+    <script src="src/entities/NormalZombie.js"></script>
+    <script src="src/entities/FastZombie.js"></script>
+    <script src="src/entities/GiantZombie.js"></script>
+    <script src="src/scenes/StartScene.js"></script>
+    <script src="src/scenes/GameScene.js"></script>
+    <script src="src/scenes/EndScene.js"></script>
+    <script src="src/main.js"></script>
+    
+    <script>
+        document.getElementById('loading').style.display = 'none';
+    </script>
+</body>
+</html>
