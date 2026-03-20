@@ -1,73 +1,66 @@
-# React + TypeScript + Vite
+# 🧟‍♂️ Zombie Survival Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A top-down zombie survival shooting game built with Phaser.js, React, and TypeScript.
 
-Currently, two official plugins are available:
+## 🎮 Game Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Player Controls**: WASD movement, mouse aiming and shooting
+- **Zombie Types**:
+  - Normal Zombie: Balanced speed and health
+  - Fast Zombie: High speed, low health
+  - Giant Zombie: Low speed, high health and damage
+- **Wave System**: 5 waves of increasing difficulty
+- **Game Mechanics**: Health system, ammo management with reloading
+- **Multiple Scenes**: Start screen, gameplay, victory/defeat screens
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Game Engine**: Phaser.js 3.80
+- **UI Framework**: React 19 + TypeScript
+- **Build Tool**: Vite 8.0
+- **Physics**: Arcade Physics
 
-## Expanding the ESLint configuration
+## 🚀 Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+```bash
+# Install dependencies
+npm install
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+# Start development server
+npm run dev
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Build for production
+npm run build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🎯 How to Play
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. Use **WASD** keys to move your character
+2. **Mouse** to aim
+3. **Left click** to shoot
+4. **R** to reload
+5. Survive all 5 waves to win!
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 📁 Project Structure
+
 ```
+src/
+├── game/
+│   ├── GameConfig.ts          # Game constants and configuration
+│   ├── GameComponent.tsx      # React wrapper for Phaser game
+│   └── scenes/
+│       ├── StartScene.ts      # Start menu
+│       ├── GameScene.ts       # Main gameplay
+│       ├── GameOverScene.ts   # Defeat screen
+│       └── VictoryScene.ts    # Victory screen
+├── App.tsx
+├── main.tsx
+└── index.css
+```
+
+## ✨ Recent Updates
+
+- Fixed collision detection system
+- Resolved health bar display issues
+- Improved wave completion logic
+- Added hit cooldown protection
